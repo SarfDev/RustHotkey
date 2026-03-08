@@ -1,0 +1,37 @@
+# Mouselock Tool
+
+Un'utility da linea di comando per Windows scritta in Rust progettata per bloccare la coordinata Y del mouse e simulare la pressione continua del clic sinistro tramite l'uso di un hotkey personalizzabile.
+
+## Funzionalità
+
+- **Blocco della Y:** Mantiene fermo il puntatore del mouse sulla coordinata Y corrente finché l'hotkey scelto viene tenuto premuto.
+- **Auto-Click Sinistro:** In concomitanza con il blocco della coordinata, simula la pressione del tasto sinistro del mouse (tenuto premuto), rilasciandolo quando l'hotkey viene lasciato.
+- **Scelta Flessibile dell'Hotkey:** Permette di inserire all'avvio il tasto preferito (es. tasti da `F1` a `F12`, `CTRL`, `ALT`, `SHIFT`, tasti extra del mouse come `MOUSE4` MOUSE5`, ecc.).
+- **Uscita di Sicurezza:** Possibilità di premere **F10** in qualsiasi momento per sbloccare tempestivamente il mouse e chiudere il programma in modo sicuro.
+
+## Utilizzo
+
+1. Avvia il programma eseguendo il file binario compilato.
+2. Verrà mostrato a schermo un elenco di tutti i tasti supportati.
+3. Digita il nome del tasto che desideri utilizzare e premi Invio (es. `F4`, `LSHIFT` o `MOUSE4`).
+4. Tieni premuto il tasto scelto quando desideri attivare il blocco della Y e il click sinistro automatico; rilascialo per sbloccarlo.
+5. Premi `F10` sulla tastiera per interrompere l'esecuzione e chiudere l'applicazione.
+
+## Requisiti
+
+- Sistema Operativo: Windows
+- [Rust](https://rustup.rs/) (solo se si desidera compilare il progetto partendo dal codice sorgente)
+
+## Compilazione
+
+Per compilare il progetto partendo dal codice sorgente, assicurati di avere Rust installato, posizionati nella cartella principale e lancia il comando:
+
+```bash
+cargo build --release
+```
+
+Il file eseguibile generato (pronto per l'uso) sarà reperibile in `target/release/mouselock.exe`.
+
+## Dipendenze principali
+
+- Il progetto utilizza la crate ufficiale [`windows`](https://crates.io/crates/windows) della Microsoft per interfacciarsi con le API Win32 (`ClipCursor`, `mouse_event`, `GetAsyncKeyState`, ecc.).
